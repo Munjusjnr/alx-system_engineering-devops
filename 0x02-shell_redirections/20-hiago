@@ -1,2 +1,2 @@
 #!/bin/bash
-sort | tr '[cC]'
+sort | tr -d '[Cc]'
