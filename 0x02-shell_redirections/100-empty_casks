@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type f d -empty | cut -d: -f1,6 | ls -a
+find . -type d -empty -o -type f -empty |  ls -A1
