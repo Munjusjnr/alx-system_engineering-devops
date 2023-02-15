@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -A1 *.gif | cut -f 1 -d '.'
+find . -iname '.gif' -printf "%p\n"
