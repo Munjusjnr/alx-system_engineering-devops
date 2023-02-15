@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -iname '.gif' -printf "%p\n"
+find . -iname '*.gif' -printf "%p\n"
