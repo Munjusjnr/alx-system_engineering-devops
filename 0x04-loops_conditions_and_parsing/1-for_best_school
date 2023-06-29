@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This script displays the string "Best school" numerous times
+for i 
