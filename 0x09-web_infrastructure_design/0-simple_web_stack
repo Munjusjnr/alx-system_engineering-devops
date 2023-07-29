@@ -1,0 +1,37 @@
+Url for the image:
+	https://imgur.com/a/ngPpDCd
+
+Specifications about this type of infrastructure:
+
+- We basically have a single physical or virtual server that hosts the entire web infrastructure.
+  The server is a computer system responsible for processing requests and serving web pages to users.
+
+- A domain name is a human-readable address used to access websites on the internet.
+  In this case, "www.foobar.com" is our domain name.
+
+- We configure a "www" DNS record as a CNAME (Canonical Name) record that points to the server's IP address,
+  which is 8.8.8.8 in this example. This record helps resolve the domain name to the server's IP address.
+
+- The web server's role is to receive incoming HTTP requests from users and serve the appropriate web pages
+  in response. In this infrastructure, we are using Nginx as the web server software.
+
+-  The application server is responsible for executing the server-side code of the website/application.
+  It processes dynamic content, interacts with the database, and generates the web pages to be served by the web server.
+
+- The application files contain the source code and files required to run the website/application. 
+  These files are stored on the server and are used by the application server to process requests and generate dynamic content.
+
+- The database is used to store and manage the website/application's data. 
+In this infrastructure, we're using MySQL as the relational database management system.
+
+Issues that will arise from this infrastructure:
+
+- SPOF(Single point of failure): Since we have only one server in this infrastructure, it becomes a single point of failure.
+  If the server goes down due to hardware or software issues, the entire website will become inaccessible.
+
+- Downtime during the maintenanze: When performing maintenance tasks, such as deploying new code or updating the web server,
+  the website may experience downtime. During this period, users won't be able to access the website.
+
+- Cannot scale if too much incoming traffic: This infrastructure has limited scalability.
+  As the incoming traffic increases, a single server may not handle the load efficiently, leading to degraded performance
+  or website downtime during traffic spikes.
