@@ -1,0 +1,50 @@
+Url For the Image:
+
+https://imgur.com/a/davrvll
+
+Some specifications about the additional elements added to the infrastructure:
+
+-  Additional Server (Server 2): The second server provides redundancy and high availability.
+  If Server 1 experiences any issues, Server 2 can take over and continue serving the application.
+
+- Load Balancer (HAProxy): The load balancer ensures that incoming requests are evenly distributed between the application servers.
+  This improves performance, optimizes resource utilization, and avoids overwhelming a single server.
+
+- Replica Database (MySQL): By having a replica database on Server 2, we achieve data redundancy and create a failover mechanism.
+  If the primary database on Server 1 fails, the replica database on Server 2 can take over, minimizing downtime.
+
+Load Balancer Configuration:
+
+The load balancer is configured with a Round Robin distribution algorithm. This means that for each new incoming request,
+the load balancer will sequentially route it to the next server in the list (Server 1, then Server 2, then back to Server 1, and so on).
+This distribution ensures that each server gets an equal share of incoming request.
+
+Active-Active vs. Active-Passive Setup:
+
+In this infrastructure, the load balancer enables an Active-Active setup. Both Server 1 and Server 2
+are actively serving traffic, and the load balancer distributes the incoming requests between them.
+If one server fails, the other server can handle the entire load.
+
+Database Primary-Replica (Master-Slave) Cluster:
+
+The primary-replica database cluster works in a way that the primary node (Master) handles both read and write operations.
+Any changes made to the data are immediately replicated to the replica node (Slave).
+The replica node is used for read-only operations, offloading the read traffic from the primary node and enhancing performance.
+
+Difference between Primary and Replica Nodes in Regard to the Application:
+
+The application connects to the primary database node for both read and write operations.
+Any data changes made by the application are written to the primary node, and the replica node automatically syncs
+and mirrors those changes. The application does not write directly to the replica node, as it is read-only.
+However, it can query the replica node for read operations, reducing the read load on the primary node.
+
+Issues with this Infrastructure:
+
+SPOF: While the application servers and database have redundancy, the load balancer itself can be a single point of failure. 
+If the load balancer fails, incoming traffic won't be distributed, and the website will become inaccessible.
+
+Security Issues: The infrastructure lacks a firewall to protect the servers and the load balancer from unauthorized access. 
+Additionally, there is no HTTPS implementation to secure data transmission, leaving user information vulnerable to interception.
+
+No Monitoring: Without monitoring tools, it's challenging to identify performance bottlenecks, potential security breaches,
+or resource utilization issues. Monitoring is crucial for maintaining a healthy and reliable web infrastructure.
