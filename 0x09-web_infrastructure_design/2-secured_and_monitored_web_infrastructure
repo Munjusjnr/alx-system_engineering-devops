@@ -1,0 +1,38 @@
+URL FOR THE IMAGE:
+	
+https://imgur.com/a/S5a2keS
+
+Explanation for Additional Elements:
+
+Firewalls: Firewalls are added to each server to control incoming and outgoing network traffic. 
+They help protect the servers from unauthorized access and potential cyberattacks.
+
+HTTPS: Serving traffic over HTTPS encrypts the data exchanged between the server and the user's browser. 
+This ensures data confidentiality, integrity, and authenticity, protecting sensitive information from eavesdropping and tampering.
+
+Monitoring: Monitoring is used to keep track of server performance, resource utilization, and system health. It helps identify bottlenecks, unusual activities, and potential security breaches, enabling timely responses and ensuring the website's reliability.
+
+Monitoring Data Collection: The monitoring clients on each server collect various metrics such as CPU usage, 
+memory usage, disk space, network traffic, request rates, error rates, etc.
+These metrics are then sent to a centralized monitoring service (e.g., Sumo Logic), where they can be analyzed and visualized.
+
+Monitoring Web Server QPS:
+
+To monitor the web server's QPS (Queries Per Second), the monitoring tool would track the incoming 
+HTTP requests to the web server and calculate the average number of queries it receives per second. 
+This data can help understand the server's load and performance, enabling scaling decisions if needed.
+
+Issues with this Infrastructure:
+
+Terminating SSL at the Load Balancer Level: While terminating SSL at the load balancer level improves performance 
+by offloading SSL decryption from the application servers, it also means that the traffic between the 
+load balancer and the application servers is not encrypted. This poses a security risk, especially if 
+the internal network is not properly secured.
+
+Only One MySQL Server Capable of Accepting Writes: Having only one MySQL server that can accept writes creates a 
+single point of failure for the database. If this server fails, write operations will be impacted,
+causing potential data loss and downtime.
+
+Servers with All the Same Components: Having servers with identical components (database, web server, and application server) 
+might lead to homogeneity issues. If a critical software vulnerability affects one server,
+it could potentially affect all the servers, making the entire infrastructure vulnerable to the same exploit.

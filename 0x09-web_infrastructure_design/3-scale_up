@@ -1,0 +1,37 @@
+URL for the Image:
+
+https://imgur.com/a/SiqEbjL
+
+Explanation for Additional Elements:
+
+Additional Server (Server 3 - Database): By splitting the database onto its own server (Server 3), 
+we can optimize database performance and separation of concerns. This approach also prevents resource contention 
+between the application and database servers.
+
+Load Balancer (HAProxy): The load balancer is added to ensure even distribution of incoming traffic between the web server 
+and the application server. It balances the load across the two servers, preventing one server from becoming overwhelmed 
+and improving overall performance.
+
+By separating the components onto different servers, we achieve better resource isolation, making it easier to manage 
+and scale each component independently based on its unique requirements.
+
+Benefits of This Infrastructure:
+
+Scalability: With separate servers for each component, we can scale each part of the infrastructure independently.
+For example, if the database becomes a bottleneck, we can add more resources to Server 3 or
+consider sharding the database to distribute the load.
+
+Fault Isolation: If any component (web server, application server, or database) fails, the other
+components can continue to function. For example, if the application server experiences an issue,
+the web server can still serve static content and show error pages to users while the problem is resolved.
+
+High Availability: The cluster configuration of the load balancer provides high availability. 
+If one instance of the load balancer fails, the other instance can continue to route traffic to the available servers.
+
+Better Security: Separating the web server, application server, and database on different servers can improve security. 
+Each component can have its own set of security configurations, reducing the attack surface.
+
+Performance: By distributing the load between the web server and the application server, we can achieve better performance 
+and handle more concurrent users.
+
+Overall, this infrastructure design provides a scalable, fault-tolerant, and secure setup to host the website www.foobar.com effectively.
