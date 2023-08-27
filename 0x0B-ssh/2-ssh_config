@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# updating ssh configuration
+Host 248528-web-01
+     HostName 54.88.28.100
+     User ubuntu
+     IdentityFile ~/.ssh/school
+     PasswordAuthentication no
