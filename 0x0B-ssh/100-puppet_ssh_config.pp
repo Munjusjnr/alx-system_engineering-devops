@@ -1,6 +1,6 @@
 # using puppet to manipulate config file
 
-file { '/home/ubuntu/.ssh/config':
+file { '/etc/ssh/ssh_config':
   ensure  => file,
   content => "
     Host 248528-web-01
@@ -9,7 +9,7 @@ file { '/home/ubuntu/.ssh/config':
         IdentityFile ~/.ssh/school
         PasswordAuthentication no
   ",
-  owner   => 'ubuntu',
-  group   => 'ubuntu',
+  owner   => 'root',
+  group   => 'root',
   mode    => '0600',
 }
