@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Installing nginx web server
+sudo apt-get -y update
+#Installs the nginx server
+sudo apt-get -y install nginx
+#Overwrites the existing default index.html with string hello world
+echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
+# Restarts the server
+sudo service nginx restart
