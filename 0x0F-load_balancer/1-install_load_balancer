@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Installing my load balancer
+# updating the packages of the current server
+sudo apt-get -y update
+
+# Installing haproxy
+sudo apt-get -y install haproxy
+
+sudo chown  $USER:$USER /etc/haproxy/haproxy.cfg
+
+echo "global
+    log /dev/log    local0
+    log /dev/log    local1 notice
+    maxconn 2000
+    user haproxy
+    group haproxy
+
+defaults
+    log global
+    mode http
+    option httplog
+    option dontlognull
+    timeout connect 5000
+    timeout client  50000
+    timeout server  50000
+
+frontend http-in
+    bind *:80
+    default_backend servers
+
+backend servers
+    balance roundrobin
+    server 248528-web-01 54.88.28.100 check
+    server 248528-web-02 54.221.185.129 check" >> /etc/haproxy/haproxy.cfg
+
+sudo service haproxy start
