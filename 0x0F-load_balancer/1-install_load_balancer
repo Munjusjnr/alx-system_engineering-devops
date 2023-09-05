@@ -30,7 +30,7 @@ frontend http-in
 
 backend servers
     balance roundrobin
-    server 248528-web-01 54.88.28.100 check
-    server 248528-web-02 54.221.185.129 check" >> /etc/haproxy/haproxy.cfg
+    server 248528-web-01 54.88.28.100:80 check
+    server 248528-web-02 54.221.185.129:80 check" >> /etc/haproxy/haproxy.cfg
 
 sudo service haproxy start
